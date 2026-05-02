@@ -3,7 +3,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 export const api = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://talentsphere-backend-b6lh.onrender.com/api",
 });
 
 // attach token
