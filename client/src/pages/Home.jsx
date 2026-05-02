@@ -5,7 +5,7 @@ import Hero from "../components/Hero";
 import HowItWorks from "../components/HowItWorks";
 import RecruiterCTA from "../components/RecruiterCTA";
 import TopSkills from "../components/TopSkills";
-import WhyChooseUs from "../components/TopSkills";
+import WhyChooseUs from "../components/WhyChooseUs";
 
 
 const Home = () => {
@@ -14,7 +14,7 @@ const Home = () => {
       <Hero />
       <FeaturedJobs />
       <HowItWorks />
-      <WhyChooseUs />
+      <WhyChooseUs/>
       <TopSkills />
       <RecruiterCTA />
       <FinalCTA />

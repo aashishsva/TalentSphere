@@ -50,7 +50,11 @@ const JobCard = ({ job }) => {
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center overflow-hidden p-2 group-hover:scale-105 transition-transform">
               <img
-                src={job.logo || "https://via.placeholder.com/100"}
+                src={
+                  job.logo
+                    ? job.logo
+                    : `https://ui-avatars.com/api/?name=${job.company}`
+                }
                 alt={job.company}
                 className="w-full h-full object-contain"
               />

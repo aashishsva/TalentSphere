@@ -16,6 +16,7 @@ const PostJob = () => {
     salary: "",
     description: "",
     skills: "",
+    logo: "",
   });
 
   const handleChange = (e) => {
@@ -54,27 +55,46 @@ const PostJob = () => {
 
   return (
     <div className="min-h-screen bg-slate-50/50 pb-20 pt-12">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="max-w-4xl mx-auto px-6"
       >
         {/* Header */}
         <header className="mb-10 text-center">
-          <h1 className="text-4xl font-black text-slate-900 tracking-tight">Hire Top Talent</h1>
-          <p className="text-slate-500 font-medium mt-2">Fill in the details to reach thousands of qualified candidates.</p>
+          <h1 className="text-4xl font-black text-slate-900 tracking-tight">
+            Hire Top Talent
+          </h1>
+          <p className="text-slate-500 font-medium mt-2">
+            Fill in the details to reach thousands of qualified candidates.
+          </p>
         </header>
 
         <div className="bg-white rounded-[2.5rem] border border-slate-200 shadow-xl shadow-slate-200/50 overflow-hidden">
           <form onSubmit={handleSubmit} className="p-8 md:p-12 space-y-8">
-            
             {/* Section 1: Basic Info */}
             <div className="space-y-6">
-              <h3 className="text-xs font-black text-blue-600 uppercase tracking-[0.2em] mb-4">Basic Information</h3>
-              
+              <h3 className="text-xs font-black text-blue-600 uppercase tracking-[0.2em] mb-4">
+                Basic Information
+              </h3>
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Job Role / Title</label>
+                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">
+                    Company Logo URL (optional)
+                  </label>
+                  <input
+                    name="logo"
+                    placeholder="Paste company logo URL"
+                    value={form.logo}
+                    onChange={handleChange}
+                    className="w-full bg-slate-50 border border-slate-200 p-4 rounded-2xl outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/5 transition-all font-bold text-slate-800"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">
+                    Job Role / Title
+                  </label>
                   <input
                     name="title"
                     placeholder="e.g. Senior Frontend Developer"
@@ -85,7 +105,9 @@ const PostJob = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Company Name</label>
+                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">
+                    Company Name
+                  </label>
                   <input
                     name="company"
                     placeholder="e.g. Google"
@@ -99,7 +121,9 @@ const PostJob = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Location</label>
+                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">
+                    Location
+                  </label>
                   <input
                     name="location"
                     placeholder="City or Remote"
@@ -110,7 +134,9 @@ const PostJob = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Employment Type</label>
+                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">
+                    Employment Type
+                  </label>
                   <select
                     name="type"
                     value={form.type}
@@ -124,7 +150,9 @@ const PostJob = () => {
                   </select>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Annual Salary</label>
+                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">
+                    Annual Salary
+                  </label>
                   <input
                     name="salary"
                     placeholder="e.g. 12 - 15 LPA"
@@ -140,10 +168,14 @@ const PostJob = () => {
 
             {/* Section 2: Technicals */}
             <div className="space-y-6">
-              <h3 className="text-xs font-black text-blue-600 uppercase tracking-[0.2em] mb-4">Requirements & Details</h3>
-              
+              <h3 className="text-xs font-black text-blue-600 uppercase tracking-[0.2em] mb-4">
+                Requirements & Details
+              </h3>
+
               <div className="space-y-2">
-                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Skills (Comma Separated)</label>
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">
+                  Skills (Comma Separated)
+                </label>
                 <input
                   name="skills"
                   placeholder="React, Tailwind, Node.js, MongoDB"
@@ -154,7 +186,9 @@ const PostJob = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Comprehensive Job Description</label>
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">
+                  Comprehensive Job Description
+                </label>
                 <textarea
                   name="description"
                   placeholder="What will the candidate do? What are the perks?"
@@ -175,9 +209,10 @@ const PostJob = () => {
               >
                 {loading ? "Syncing with Servers..." : "🚀 Publish Job Listing"}
               </button>
-              <p className="text-center text-[10px] text-slate-400 font-bold mt-4 uppercase tracking-tighter">By publishing, you agree to TelentSphere's Recruiter Guidelines.</p>
+              <p className="text-center text-[10px] text-slate-400 font-bold mt-4 uppercase tracking-tighter">
+                By publishing, you agree to TelentSphere's Recruiter Guidelines.
+              </p>
             </div>
-
           </form>
         </div>
       </motion.div>

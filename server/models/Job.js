@@ -23,6 +23,10 @@ const jobSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
+    logo: {
+      type: String,
+      default: "",
+    },
   },
   { timestamps: true },
 );

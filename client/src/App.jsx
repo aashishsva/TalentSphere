@@ -23,6 +23,10 @@ import PublicProfile from "./pages/PublicProfile";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import PublicRoute from "./routes/PublicRoute";
 import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import LegalPage from "./pages/Privacy";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,6 +58,7 @@ function App() {
     <div className="min-h-screen relative overflow-hidden">
       <div className="glow-bg" />
       <BrowserRouter>
+        <ScrollToTop />
         <Toaster position="top-right" />
 
         <Navbar />
@@ -63,9 +68,19 @@ function App() {
             path="/"
             element={
               <>
-               <Home/>
+                <Home />
               </>
             }
+          />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route
+            path="/privacy"
+            element={<LegalPage title="Privacy Policy" />}
+          />
+          <Route
+            path="/terms"
+            element={<LegalPage title="Terms of Service" />}
           />
 
           <Route

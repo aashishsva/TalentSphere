@@ -11,6 +11,7 @@ export const createJob = async (req, res) => {
 
     const job = await Job.create({
       ...req.body,
+      logo: req.body.logo || "",
       postedBy: req.user.id,
     });
 
@@ -243,9 +244,7 @@ export const getRecommendedJobs = async (req, res) => {
     const scoredJobs = jobs.map((job) => {
       const jobSkills = (job.skills || []).map((s) => s.toLowerCase());
 
-      const matched = jobSkills.filter((skill) =>
-        userSkills.includes(skill)
-      );
+      const matched = jobSkills.filter((skill) => userSkills.includes(skill));
 
       const score =
         jobSkills.length === 0
