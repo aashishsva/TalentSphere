@@ -22,6 +22,7 @@ import PublicProfile from "./pages/PublicProfile";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
 import PublicRoute from "./routes/PublicRoute";
+import Home from "./pages/Home";
 
 function App() {
   const dispatch = useDispatch();
@@ -62,8 +63,7 @@ function App() {
             path="/"
             element={
               <>
-                <Hero />
-                <FeaturedJobs />
+               <Home/>
               </>
             }
           />

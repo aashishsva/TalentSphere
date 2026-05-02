@@ -21,7 +21,9 @@ const Jobs = () => {
       try {
         setLoading(true);
 
-        const res = await api.get("/jobs/recommended");
+        const res = await api.get("/jobs/recommended", {
+          params: filters,
+        });
 
         setJobs(res.data);
       } catch (err) {
@@ -33,7 +35,7 @@ const Jobs = () => {
     };
 
     fetchJobs();
-  }, []);
+  }, [filters]);
 
   const clearFilters = () => {
     setFilters({ keyword: "", location: "", type: "" });

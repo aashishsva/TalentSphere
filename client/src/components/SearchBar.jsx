@@ -68,10 +68,10 @@ const SearchBar = ({ filters = {}, setFilters = () => {} }) => {
         </div>
 
         {/* Main Search Button */}
-        <button className="w-full md:w-auto bg-slate-900 hover:bg-blue-600 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 group/btn">
+        {/* <button className="w-full md:w-auto bg-slate-900 hover:bg-blue-600 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 group/btn">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="group-hover/btn:translate-x-0.5 transition-transform"><path d="m21 21-4.3-4.3"/><circle cx="11" cy="11" r="8"/></svg>
           <span>Find Jobs</span>
-        </button>
+        </button> */}
 
       </div>
     </div>

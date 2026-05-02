@@ -56,9 +56,11 @@ const JobCard = ({ job }) => {
               />
             </div>
             <div>
-              <span className="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded">
-                {job.matchScore}% Match
-              </span>
+              {job.matchScore !== undefined && (
+                <span className="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded">
+                  {job.matchScore}% Match
+                </span>
+              )}
               <h3 className="font-bold text-slate-900 text-lg group-hover:text-blue-600 transition-colors">
                 {job.title}
               </h3>

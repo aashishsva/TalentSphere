@@ -13,8 +13,8 @@ const FeaturedJobs = () => {
     const fetchFeaturedJobs = async () => {
       try {
         setLoading(true);
-        // Humne limit 6 rakhi hai taaki landing page par load na pade
-        const res = await api.get("/jobs?limit=6"); 
+
+        const res = await api.get("/jobs/recommended?limit=6");
         setJobs(res.data.jobs || res.data); // Backend response structure ke hisaab se
       } catch (err) {
         console.error("Error fetching featured jobs:", err);
@@ -29,7 +29,6 @@ const FeaturedJobs = () => {
   return (
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div className="max-w-xl">
@@ -37,16 +36,19 @@ const FeaturedJobs = () => {
               Featured Opportunities
             </h2>
             <p className="mt-3 text-slate-500 font-medium">
-              Real-time listings from industry leaders. Your next big career move starts right here.
+              Real-time listings from industry leaders. Your next big career
+              move starts right here.
             </p>
           </div>
-          
-          <Link 
-            to="/jobs" 
+
+          <Link
+            to="/jobs"
             className="text-sm font-bold text-blue-600 hover:text-blue-700 flex items-center gap-2 group transition-all"
           >
-            Explore all openings 
-            <span className="group-hover:translate-x-1 transition-transform">→</span>
+            Explore all openings
+            <span className="group-hover:translate-x-1 transition-transform">
+              →
+            </span>
           </Link>
         </div>
 
@@ -80,8 +82,8 @@ const FeaturedJobs = () => {
         {/* Mobile View More */}
         {!loading && jobs.length > 0 && (
           <div className="mt-10 md:hidden">
-            <Link 
-              to="/jobs" 
+            <Link
+              to="/jobs"
               className="w-full inline-flex items-center justify-center py-4 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-bold text-slate-600"
             >
               View All Openings

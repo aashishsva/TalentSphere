@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 /* FAANG websites usually use Inter or System fonts for a clean look */
-@import url('https:fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url("https:fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 :root {
   --brand-primary: #2563eb; /* A more professional blue */
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   @apply bg-slate-50 text-slate-900 antialiased;
 }
 
@@ -18,8 +18,30 @@ body {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
- @keyframes bounce-slow {
-   0%, 100% { transform: translateY(0); }
-   50% { transform: translateY(-10px); }
- }
- .animate-bounce-slow { animation: bounce-slow 3s ease-in-out infinite; }
+@keyframes bounce-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.animate-bounce-slow {
+  animation: bounce-slow 3s ease-in-out infinite;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.25s ease;
+}

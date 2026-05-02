@@ -212,22 +212,40 @@ export const getRecruiterStats = async (req, res) => {
 export const getRecommendedJobs = async (req, res) => {
   try {
     const userId = req.user.id || req.user._id;
+    const { keyword, location, type } = req.query;
 
     const user = await User.findById(userId);
 
-    if (!user) {
-      console.log("USER NOT FOUND IN DB");
-      return res.status(404).json({ message: "User not found" });
-    }
-
     const userSkills = (user.skills || []).map((s) => s.toLowerCase());
 
-    const jobs = await Job.find().sort({ createdAt: -1 });
+    // 🔥 FILTER QUERY
+    let query = {};
 
+    if (keyword) {
+      query.$or = [
+        { title: { $regex: keyword, $options: "i" } },
+        { company: { $regex: keyword, $options: "i" } },
+      ];
+    }
+
+    if (location) {
+      query.location = { $regex: location, $options: "i" };
+    }
+
+    if (type) {
+      query.type = type;
+    }
+
+    // 🔥 FILTERED JOBS
+    const jobs = await Job.find(query).sort({ createdAt: -1 });
+
+    // 🔥 MATCH SCORE
     const scoredJobs = jobs.map((job) => {
       const jobSkills = (job.skills || []).map((s) => s.toLowerCase());
 
-      const matched = jobSkills.filter((skill) => userSkills.includes(skill));
+      const matched = jobSkills.filter((skill) =>
+        userSkills.includes(skill)
+      );
 
       const score =
         jobSkills.length === 0
@@ -240,7 +258,7 @@ export const getRecommendedJobs = async (req, res) => {
       };
     });
 
-    // 🔥 sort best first
+    // 🔥 SORT
     scoredJobs.sort((a, b) => b.matchScore - a.matchScore);
 
     res.json(scoredJobs);
